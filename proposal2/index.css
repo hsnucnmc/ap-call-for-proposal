@@ -1,0 +1,357 @@
+:root {
+    --d1: #92242a;
+    --d2: #07385a;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background-color: var(--d2);
+    margin: 0;
+    overflow: hidden;
+}
+
+.center-panel {
+    position: relative;
+    width: 30vw;
+    padding: 4rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    overflow: visible;
+    animation: fade-in 0.5s ease-out;
+}
+
+@keyframes fade-in {
+    0% {
+        transform: translateY(20vw);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+}
+
+.circle {
+    position: absolute;
+    width: 8vw;
+    aspect-ratio: 1/1;
+    background: #f0f0f0;
+    border-radius: 50%;
+    top: -4vw;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+.circle #RotateCircleContainer img {
+    margin: 10%;
+    width: 80%;
+    height: auto;
+}
+
+.inputarea {
+    margin-top: 3vw;
+}
+
+.inputarea .box {
+    margin-bottom: 1rem;
+}
+
+.inputpart {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.inputarea .submitbox {
+    margin: auto;
+    width: 3rem;
+    height: 2rem;
+    padding: 0.5rem 2rem;
+    background-color: var(--d1);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.send {
+    width: 3rem;
+    margin: auto;
+}
+
+
+.circle:hover {
+    animation: flip 2s infinite ease-in-out;
+}
+
+@keyframes flip {
+    0% {
+        transform: translateX(-50%) rotateY(0deg);
+    }
+
+    50% {
+        transform: translateX(-50%) rotateY(180deg);
+    }
+
+    100% {
+        transform: translateX(-50%) rotateY(360deg);
+    }
+}
+
+.loader {
+    display: none;
+    margin: auto;
+    color: #f0f0f0;
+    width: 1rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    clip-path: inset(-2.5vw);
+    box-shadow: -60px 1rem, -60px 1rem, -60px 1rem;
+    transform: translateY(-1rem);
+    animation: l19 1s infinite linear;
+}
+
+@keyframes l19 {
+    16.67% {
+        box-shadow: -60px 1rem, -60px 1rem, 19px 1rem
+    }
+
+    33.33% {
+        box-shadow: -60px 1rem, 0px 1rem, 19px 1rem
+    }
+
+    40%,
+    60% {
+        box-shadow: -19px 1rem, 0px 1rem, 19px 1rem
+    }
+
+    66.67% {
+        box-shadow: -19px 1rem, 0px 1rem, 60px 1rem
+    }
+
+    83.33% {
+        box-shadow: -19px 1rem, 60px 1rem, 60px 1rem
+    }
+
+    100% {
+        box-shadow: 60px 1rem, 60px 1rem, 60px 1rem
+    }
+}
+
+#message {
+    color: var(--d1);
+    font-weight: 600;
+    text-align: center;
+}
+
+.togglehelp img {
+    height: 1.5rem;
+    width: auto;
+}
+
+.togglehelp {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+@keyframes spinIn {
+    0% {
+        transform: translateX(12vw) translateY(6.8vw) rotate(60deg);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateX(6.8vw) translateY(4vw) rotate(30deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(0) translateY(0) rotate(0);
+        opacity: 1;
+    }
+}
+
+@keyframes spinOut {
+    0% {
+        transform: translateX(0) translateY(0) rotate(0);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateX(-6.8vw) translateY(4vw) rotate(-30deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-12vw) translateY(6.8vw) rotate(-60deg);
+        opacity: 1;
+    }
+}
+
+#rotatecircle {
+    clip-path: circle(50%);
+}
+
+.spin-in {
+    animation: spinIn 0.1s linear forwards;
+}
+
+.spin-out {
+    animation: spinOut 0.1s linear forwards;
+}
+
+#message {
+    min-height: 1.5rem;
+}
+
+.helparea {
+    position: absolute;
+    background-color: white;
+    border-radius: 50% 50% 0 0;
+    margin-top: 10vh;
+    height: 100vh;
+    min-width: 80vw;
+    padding: 1rem;
+    box-shadow: black 0 0 1rem;
+    display: none;
+}
+
+.helparea h2 {
+    font-size: xx-large;
+    font-weight: 600;
+    text-align: center;
+}
+
+.helptext {
+    margin: auto;
+    width: fit-content;
+}
+
+
+.helptext h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.helptext h3 img {
+    height: 1.5rem;
+    width: auto;
+}
+
+@keyframes helparea-in {
+    0% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+}
+
+@keyframes helparea-out {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+
+}
+
+@keyframes helparea-in-background {
+    0% {
+        background-color: #07385a;
+    }
+
+    100% {
+        background-color: #052236;
+    }
+
+}
+
+@keyframes helparea-out-background {
+    0% {
+        background-color: #052236;
+    }
+
+    100% {
+        background-color: #07385a;
+    }
+}
+
+.close {
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: auto;
+    cursor: pointer;
+    padding: 0.5rem;
+    text-shadow: #052236 1px 1px 1px;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        overflow-y: scroll;
+    }
+
+    .center-panel {
+        width: 100%;
+        height: 100vh;
+        background-color: var(--d2);
+        color: white;
+        padding: 0;
+    }
+
+    .circle {
+        position: relative;
+        width: 35vw;
+        margin-top: 5vh;
+    }
+
+    .inputarea input[type="text"],
+    .inputarea input[type="password"] {
+        width: 70%;
+        margin: auto;
+    }
+
+    .helparea {
+        overflow-y: scroll;
+        height: 90vh;
+        border-radius: 50% 50% 0 0 / 20% 20% 0 0;
+        /* Make the entire top border rounded */
+
+    }
+
+    .helptext {
+        margin-bottom: 10rem;
+    }
+
+    .togglehelp img {
+        filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(56deg) brightness(102%) contrast(104%);
+    }
+}

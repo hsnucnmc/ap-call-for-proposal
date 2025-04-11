@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1 ">
+    <title>HSNU ap login panel</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <!-- Made by 161205 Wu, Tai-Cheng -->
+    <div class="center-panel">
+        <div class="circle" id="rotatecircle">
+            <div id="RotateCircleContainer">
+                <img src="hsnu.svg" id="circleimage" data-current="hsnu" alt="附中怪鳥" />
+            </div>
+        </div> 
+        <div class="inputarea">
+            <h1>校園網路漫遊</h1>
+            <p id="message"></p>
+            <div class="box "><label for="username"></label><input type="text" class="inputpart" id="username" placeholder="使用者名稱" onBlur="window.scrollTo(0, 0);"></div>
+            <div class="box "><label for="password"></label><input type="password" class="inputpart" id="password" placeholder="密碼" onBlur="window.scrollTo(0, 0);"></div>
+            <div class="box submitbox" id="submitbox" onclick="submit()">
+                <div class="send" id="send">送出</div>
+                <div class="loader" id="loader"></div>
+            </div>
+            <p class="togglehelp" id="togglehelp" onclick="showhelp()"><img
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM11 15H13V17H11V15ZM13 13.3551V14H11V12.5C11 11.9477 11.4477 11.5 12 11.5C12.8284 11.5 13.5 10.8284 13.5 10C13.5 9.17157 12.8284 8.5 12 8.5C11.2723 8.5 10.6656 9.01823 10.5288 9.70577L8.56731 9.31346C8.88637 7.70919 10.302 6.5 12 6.5C13.933 6.5 15.5 8.067 15.5 10C15.5 11.5855 14.4457 12.9248 13 13.3551Z'%3E%3C/path%3E%3C/svg%3E"
+                    alt="Help">使用說明</p>
+        </div>
+
+
+    </div>
+    <div class="helparea" id="helparea">
+        <div class="helptext" id="helptext">
+            <h2>使用說明</h2>
+            <h3><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBMaWNlbnNlOiBQRC4gTWFkZSBieSB0aGVmb3JnZXNtaXRoOiBodHRwczovL2ljb25zLnRoZWZvcmdlc21pdGguY29tIC0tPgo8c3ZnIHdpZHRoPSI4MDBweCIgaGVpZ2h0PSI4MDBweCIgdmlld0JveD0iMCAwIDY0IDY0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlPSIjMDAwMDAwIiBmaWxsPSJub25lIj48cGF0aCBkPSJNNDguNjEsNTYuMDdBMTYuNjEsMTYuNjEsMCwwLDAsMzIsMzkuNDVoMEExNi42MSwxNi42MSwwLDAsMCwxNS4zOSw1Ni4wN1oiLz48cGF0aCBkPSJNMzkuNDEsMjhhOC4xMSw4LjExLDAsMCwxLTguMjUsOC4xLDguMjgsOC4yOCwwLDAsMS03Ljk1LTguMzdWMTYuNDVhLjA2LjA2LDAsMCwxLC4wNS0uMDYsNjAuNTYsNjAuNTYsMCwwLDEsOC4yNy0uNjgsNTQuOTMsNTQuOTMsMCwwLDEsNy45MS42OC4wNi4wNiwwLDAsMSwuMDYuMDZaIi8+PHBhdGggZD0iTTIzLjIxLDIwLjE0bC04LjI3LTMuOGEuMDguMDgsMCwwLDEsMC0uMTNMMzEuMzIsOC4zOWguMDZsMTYuMzMsNy43NGEuMDcuMDcsMCwwLDEsMCwuMTJMMzkuNSwyMC4xNCIvPjxwYXRoIGQ9Ik0yMy4yMSwyNC4zNUgyMC44OXMtMiwwLTIsMy4xYzAsMi44NiwyLDIuODYsMiwyLjg2bDIuNzIsMCIvPjxwYXRoIGQ9Ik0zOS40MSwyNC43MWgyLjMyczIsMCwyLDMuMDljMCwyLjg2LTIsMi44Ni0yLDIuODZIMzkiLz48bGluZSB4MT0iNDYuODUiIHkxPSIzMy4xNSIgeDI9IjQ2Ljg1IiB5Mj0iMTYuNzIiLz48Y2lyY2xlIGN4PSI0Ni44NSIgY3k9IjM1LjI4IiByPSIyLjEzIi8+PHBhdGggZD0iTTM5LjUsMjNhNDIuODksNDIuODksMCwwLDAtNy45NS0uNjksNDAuODUsNDAuODUsMCwwLDAtOC4zNC42OSIvPjwvc3ZnPg=="
+                    alt="Student">學生</h3>
+            <ul>
+                <li>帳號名稱：學號</li>
+                <li>密碼：學校電子郵件的密碼</li>
+            </ul>
+            <h3><img src="data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22iso-8859-1%22%3F%3E%3C!--%20Generator%3A%20Adobe%20Illustrator%2018.0.0%2C%20SVG%20Export%20Plug-In%20.%20SVG%20Version%3A%206.00%20Build%200)%20%20--%3E%3C!DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd%22%3E%3C!--%20License%3A%20CC0.%20Made%20by%20SVG%20Repo%3A%20https%3A%2F%2Fwww.svgrepo.com%2Fsvg%2F121688%2Fteacher%20--%3E%3Csvg%20version%3D%221.1%22%20id%3D%22Capa_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20viewBox%3D%220%200%20489.38%20489.38%22%20style%3D%22enable-background%3Anew%200%200%20489.38%20489.38%3B%22%20xml%3Aspace%3D%22preserve%22%3E%3Cg%20id%3D%22XMLID_129_%22%3E%3Cpath%20id%3D%22XMLID_134_%22%20d%3D%22M473.725%2C5.656H213.576c-8.655%2C0-15.655%2C7.022-15.655%2C15.664v110.484l11.319-13.234c5.375-6.292%2C12.461-10.172%2C19.992-11.793V36.978h228.836v204.531H229.233v-34.238l-7.05%2C8.244c-6.161%2C7.189-14.858%2C11.65-24.262%2C12.529v29.124c0%2C8.642%2C7%2C15.655%2C15.655%2C15.655h84.489L255.141%2C467.7c-1.923%2C8.739%2C3.6%2C17.382%2C12.346%2C19.31c8.667%2C1.904%2C17.382-3.601%2C19.287-12.331l44.457-201.855h25.844l44.457%2C201.855c1.666%2C7.557%2C8.369%2C12.714%2C15.803%2C12.705c1.154%2C0%2C2.334-0.117%2C3.502-0.374c8.746-1.928%2C14.268-10.57%2C12.328-19.31l-42.92-194.877h83.481c8.647%2C0%2C15.655-7.013%2C15.655-15.655V21.32C489.38%2C12.678%2C482.372%2C5.656%2C473.725%2C5.656z%22%2F%3E%3Cpath%20id%3D%22XMLID_132_%22%20d%3D%22M349.368%2C97.116c-1.234-3.11-4.732-4.637-7.84-3.406l-92.234%2C32.555c-8.465-6.554-20.678-5.383-27.737%2C2.827l-29.267%2C34.178l-25.951-22.245c0.171%2C1.837%2C0.56%2C3.622%2C0.56%2C5.507v48.291l14.438%2C12.371c8.568%2C7.338%2C21.385%2C6.204%2C28.549-2.198l34.842-40.743l28.1-16.439l73.951-43.267C349.336%2C103.073%2C350.469%2C99.923%2C349.368%2C97.116z%22%2F%3E%3Cpath%20id%3D%22XMLID_131_%22%20d%3D%22M109.928%2C105.776H92.547c-13.308%2C0-25.01%2C6.468-32.448%2C16.327l-53.352%2C49.12c-8.313%2C7.405-9.067%2C20.232-1.581%2C28.595l43.528%2C48.585c7.421%2C8.309%2C20.267%2C9.044%2C28.579%2C1.576c8.334-7.469%2C9.038-20.262%2C1.57-28.586l-30.003-33.504l42.616-38.134l-24.82%2C33.721l24.279%2C27.107c13.416%2C14.992%2C12.151%2C38.027-2.834%2C51.453c-10.231%2C9.172-24.193%2C11.324-36.297%2C7.094c0%2C0%2C0.188%2C93.659%2C0.188%2C193.962c0%2C13.416%2C10.874%2C24.291%2C24.291%2C24.291c13.403%2C0%2C24.291-10.875%2C24.291-24.291c0-100.272%2C0-43.051%2C0-144.771h16.203c0%2C101.646%2C0%2C44.468%2C0%2C144.771c0%2C7.004-1.953%2C13.49-5.067%2C19.231c4.076%2C3.135%2C9.148%2C5.06%2C14.676%2C5.06c13.424%2C0%2C24.298-10.875%2C24.298-24.291c0-100.272%2C0.031-58.237%2C0.031-316.561C150.697%2C124.022%2C132.45%2C105.776%2C109.928%2C105.776z%22%2F%3E%3Cpath%20id%3D%22XMLID_130_%22%20d%3D%22M79.592%2C91.198c6.495%2C3.376%2C13.787%2C5.471%2C21.62%2C5.471c7.853%2C0%2C15.145-2.095%2C21.659-5.477c15.204-7.877%2C25.684-23.559%2C25.684-41.862c0-26.146-21.196-47.335-47.344-47.335c-26.144%2C0-47.335%2C21.189-47.335%2C47.335C53.877%2C67.643%2C64.368%2C83.331%2C79.592%2C91.198z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"
+                    alt="Teacher">一般教師</h3>
+            <ul>
+                <li>109/8/1 以後：
+                    <ul>
+                        <li>帳號名稱：t + 排課代碼4碼 + 身分證末2碼</li>
+                        <li>預設密碼：身分證末9碼。</li>
+                    </ul>
+                </li>
+                <li>109/7/31 以前：<ul>
+                        <li>t + 排課代碼3碼 + 身分證末3碼</li>
+                        <li>預設密碼：身分證末9碼。</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3><img src="data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%3C!--%20License%3A%20MIT.%20Made%20by%20Iconsax%3A%20https%3A%2F%2Fgithub.com%2Flusaxweb%2Ficonsax%20--%3E%3Csvg%20width%3D%22800px%22%20height%3D%22800px%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M10.05%202.53004L4.03002%206.46004C2.10002%207.72004%202.10002%2010.54%204.03002%2011.8L10.05%2015.73C11.13%2016.44%2012.91%2016.44%2013.99%2015.73L19.98%2011.8C21.9%2010.54%2021.9%207.73004%2019.98%206.47004L13.99%202.54004C12.91%201.82004%2011.13%201.82004%2010.05%202.53004Z%22%20stroke%3D%22%23292D32%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M5.63%2013.08L5.62%2017.77C5.62%2019.04%206.6%2020.4%207.8%2020.8L10.99%2021.86C11.54%2022.04%2012.45%2022.04%2013.01%2021.86L16.2%2020.8C17.4%2020.4%2018.38%2019.04%2018.38%2017.77V13.13%22%20stroke%3D%22%23292D32%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M21.4%2015V9%22%20stroke%3D%22%23292D32%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E"
+                    alt="Intern Teacher">實習教師 </h3>
+            <ul>
+                <li>帳號名稱：tt + 身分證末4碼。</li>
+                <li>預設密碼：身分證末9碼。</li>
+            </ul>
+
+            <h3><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBMaWNlbnNlOiBDQyBBdHRyaWJ1dGlvbi4gTWFkZSBieSBzYWxlc2ZvcmNlOiBodHRwczovL2xpZ2h0bmluZ2Rlc2lnbnN5c3RlbS5jb20gLS0+CjxzdmcgZmlsbD0iIzAwMDAwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiAgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiCgkgdmlld0JveD0iMCAwIDEwMCAxMDAiIHhtbDpzcGFjZT0icHJlc2VydmUiPgoKPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNODAsNzEuMlY3NGMwLDMuMy0yLjcsNi02LDZIMjZjLTMuMywwLTYtMi43LTYtNnYtMi44YzAtNy4zLDguNS0xMS43LDE2LjUtMTUuMmMwLjMtMC4xLDAuNS0wLjIsMC44LTAuNAoJCQljMC42LTAuMywxLjMtMC4zLDEuOSwwLjFDNDIuNCw1Ny44LDQ2LjEsNTksNTAsNTljMy45LDAsNy42LTEuMiwxMC44LTMuMmMwLjYtMC40LDEuMy0wLjQsMS45LTAuMWMwLjMsMC4xLDAuNSwwLjIsMC44LDAuNAoJCQlDNzEuNSw1OS41LDgwLDYzLjksODAsNzEuMnoiLz4KCTwvZz4KCTxnPgoJCTxlbGxpcHNlIGN4PSI1MCIgY3k9IjM2LjUiIHJ4PSIxNC45IiByeT0iMTYuNSIvPgoJPC9nPgo8L2c+Cjwvc3ZnPg=="
+                    alt="Student">職員工</h3>
+            <ul>
+                <li>預設帳號：t + 身分證末6碼。 </li>
+                <li>自訂帳號：txxxxxx，最多10碼。</li>
+
+                <li>預設密碼：身分證末9碼。</li>
+            </ul>
+        </div>
+        <div class="close">點擊任意空白處退出</div>
+    </div>
+
+</body>
+
+</html>
